@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/view_logs.css">
+    <title>Log Analyzer</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Log Analyzer</h1>
+    
+    <!-- Filter options -->
+    <div class="filter-box">
+    
+        SELECT * FROM table WHERE
+        <select id="criteria" name="criteria">
+            <option value="client_ip">IP Address</option>
+            <option value="status">Response Status</option>
+            <option value="response_size">Response Size</option>
+            <option value="url">URL</option>
+        </select>
+        <select id="comparison" name="comparison">
+            <option value="=">=</option>
+            <option value="<"><</option>
+            <option value=">">></option>
+            <option value="contains">contains</option>
+        </select>
+        <input type="text" id="value" name="value" placeholder="Enter value">
+        <button onclick="applyFilter()">Filter</button>
+    </div>
+    </div>
+    <div class="container">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>IP Address</th>
+                    <th>User Identifier</th>
+                    <th>User ID</th>
+                    <th>Date Time</th>
+                    <th>Request Method</th>
+                    <th>Requested URL</th>
+                    <th>Request Protocol</th>
+                    <th>Status Code</th>
+                    <th>Bytes</th>
+                    <th>Referrer</th>
+                    <th>User Agent</th>
+                </tr>
+            </thead>
+            <tbody id="logsTableBody">
+                {% for log in data %}
+                <tr>
+                    <td>{{ log[0] }}</td>
+                    <td>{{ log[1] }}</td>
+                    <td>{{ log[2] }}</td>
+                    <td>{{ log[3] }}</td>
+                    <td>{{ log[4] }}</td>
+                    <td>{{ log[5] }}</td>
+                    <td>{{ log[6] }}</td>
+                    <td>{{ log[7] }}</td>
+                    <td>{{ log[8] }}</td>
+                    <td>{{ log[9] }}</td>
+                    <td>{{ log[10] }}</td>
+                    <td>{{ log[11] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function applyFilter() {
+            const criteria = document.getElementById('criteria').value;
+            const comparison = document.getElementById('comparison').value;
+            const value = document.getElementById('value').value;
+            const logType = "{{ session['log_type'] }}"; // Get the log type from the session
+            const text = "{{ session['filename_userip'] }}";
+            fetch(`/filter_logs?filename_userip=${text}&log_type=${logType}&criteria=${criteria}&comparison=${comparison}&value=${value}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('logsTableBody');
+                    tableBody.innerHTML = '';
+                    data.forEach(log => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${log[0]}</td>
+                            <td>${log[1]}</td>
+                            <td>${log[2]}</td>
+                            <td>${log[3]}</td>
+                            <td>${log[4]}</td>
+                            <td>${log[5]}</td>
+                            <td>${log[6]}</td>
+                            <td>${log[7]}</td>
+                            <td>${log[8]}</td>
+                            <td>${log[9]}</td>
+                            <td>${log[10]}</td>
+                            <td>${log[11]}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching logs:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/view_logs.css">
+    <title>Log Analyzer</title>
+</head>
+<body>
+    <div class="header">
+    <h1>Log Analyzer</h1>
+
+<!-- Filter options -->
+<div class="filter-box">
+    SELECT * FROM table WHERE
+    <select id="criteria" name="criteria">
+        <option value="client_ip">IP Address</option>
+        <option value="status">Response Status</option>
+        <option value="response_size">Response Size</option>
+        <option value="url">URL</option>
+    </select>
+    <select id="comparison" name="comparison">
+        <option value="=">=</option>
+        <option value="<"><</option>
+        <option value=">">></option>
+        <option value="contains">contains</option>
+    </select>
+    <input type="text" id="value" name="value" placeholder="Enter value">
+    <button onclick="applyFilter()">Filter</button>
+</div>
+</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>File_name</th>
+                <th>Endtime</th>
+                <th>Timestamp</th>
+                <th>Accept</th>
+                <th>Accept_language</th>
+                <th>Ack_packets_in</th>
+                <th>Ack_packets_out</th>
+                <th>Bytes</th>
+                <th>Bytes_in</th>
+                <th>Bytes_out</th>
+                <th>Client_IP</th>
+                <th>Cached</th>
+                <th>Capture_Hostname</th>
+                <th>Client_rtt</th>
+                <th>Client_rtt_packets</th>
+                <th>Client_rtt_sum</th>
+                <th>Connection_type</th>
+                <th>Cs_pragma</th>
+                <th>Cs_version</th>
+                <th>Data_center_time</th>
+                <th>Data_packets_in</th>
+                <th>Data_packets_out</th>
+                <th>Dest_content</th>
+                <th>Dest_headers</th>
+                <th>Dest_IP</th>
+                <th>Dest_MAC</th>
+                <th>Dest_port</th>
+                <th>Duplicate_packets_in</th>
+                <th>Duplicate_packets_out</th>
+                <th>Etag</th>
+                <th>Http_comment</th>
+                <th>Http_content_length</th>
+                <th>Http_content_type</th>
+                <th>Http_method</th>
+                <th>Http_user_agent</th>
+                <th>Missing_packets_in</th>
+                <th>Missing_packets_out</th>
+                <th>Network_interface</th>
+                <th>Packets_in</th>
+                <th>Packets_out</th>
+                <th>Reply_time</th>
+                <th>Request</th>
+                <th>Request_ack_time</th>
+                <th>Request_time</th>
+                <th>Response_ack_time</th>
+                <th>Response_time</th>
+                <th>Sc_date</th>
+                <th>Server</th>
+                <th>Server_rtt</th>
+                <th>Server_rtt_packets</th>
+                <th>Server_rtt_sum</th>
+                <th>Site</th>
+                <th>Src_headers</th>
+                <th>Src_IP</th>
+                <th>Src_MAC</th>
+                <th>Src_port</th>
+                <th>Status</th>
+                <th>Time_taken</th>
+                <th>Transport</th>
+                <th>Uri</th>
+                <th>Uri_path</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+                <td>{{ row[8] }}</td>
+                <td>{{ row[9] }}</td>
+                <td>{{ row[10] }}</td>
+                <td>{{ row[11] }}</td>
+                <td>{{ row[12] }}</td>
+                <td>{{ row[13] }}</td>
+                <td>{{ row[14] }}</td>
+                <td>{{ row[15] }}</td>
+                <td>{{ row[16] }}</td>
+                <td>{{ row[17] }}</td>
+                <td>{{ row[18] }}</td>
+                <td>{{ row[19] }}</td>
+                <td>{{ row[20] }}</td>
+                <td>{{ row[21] }}</td>
+                <td>{{ row[22] }}</td>
+                <td>{{ row[23] }}</td>
+                <td>{{ row[24] }}</td>
+                <td>{{ row[25] }}</td>
+                <td>{{ row[26] }}</td>
+                <td>{{ row[27] }}</td>
+                <td>{{ row[28] }}</td>
+                <td>{{ row[29] }}</td>
+                <td>{{ row[30] }}</td>
+                <td>{{ row[31] }}</td>
+                <td>{{ row[32] }}</td>
+                <td>{{ row[33] }}</td>
+                <td>{{ row[34] }}</td>
+                <td>{{ row[35] }}</td>
+                <td>{{ row[36] }}</td>
+                <td>{{ row[37] }}</td>
+                <td>{{ row[38] }}</td>
+                <td>{{ row[39] }}</td>
+                <td>{{ row[40] }}</td>
+                <td>{{ row[41] }}</td>
+                <td>{{ row[42] }}</td>
+                <td>{{ row[43] }}</td>
+                <td>{{ row[44] }}</td>
+                <td>{{ row[45] }}</td>
+                <td>{{ row[46] }}</td>
+                <td>{{ row[47] }}</td>
+                <td>{{ row[48] }}</td>
+                <td>{{ row[49] }}</td>
+                <td>{{ row[50] }}</td>
+                <td>{{ row[51] }}</td>
+                <td>{{ row[52] }}</td>
+                <td>{{ row[53] }}</td>
+                <td>{{ row[54] }}</td>
+                <td>{{ row[55] }}</td>
+                <td>{{ row[56] }}</td>
+                <td>{{ row[57] }}</td>
+                <td>{{ row[58] }}</td>
+                <td>{{ row[59] }}</td>
+                <td>{{ row[60] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

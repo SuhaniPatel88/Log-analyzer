@@ -1,0 +1,51 @@
+body {
+    background-color: #BFC7CA;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #BFC7CA;
+    color: #005B99;
+    font-weight: 300; /* Make fonts thinner */
+}
+
+th, td {
+    border: 2px solid #83a7b5;
+    text-align: left;
+    padding: 8px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    color: #005B99; 
+    font-weight: 300; 
+}
+
+
+.header {
+    color: #7D2E00;
+    padding: 20px;
+    text-align: center;
+}
+
+.filter-box {
+    margin-top: 10px; 
+    background-color: #BFC7CA;
+    padding: 10px;
+}
+
+.filter-box select,
+.filter-box input {
+    width: 100px; 
+    padding: 8px; 
+    margin: 10px;
+    font-size: 12px; 
+    border-radius: 3px;
+}
+
+.filter-box button {
+    width: 100px;
+    padding: 10px 8px; 
+    font-size: 12px; 
+    border-radius: 3px;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Test</title>
+    <link rel="stylesheet" href="../static/css/upload.css">
+</head>
+<body>
+    <div class="container">
+        <div class="upload-page">
+            <h1>Upload Page</h1>
+            <form method="post" action="/" enctype="multipart/form-data">
+                <div><input type="text" placeholder="Filename" name="text"></div>
+                <div><input type="text" placeholder="File format(json,clf,combined)" name="file_format"></div>
+                <div><input type="file" name="file" accept=".txt, .log"></div>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+body {
+    background-color: #b1cfcf;
+    text-align: center;
+    padding: 230px;
+
+}
+
+.success-page {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.success-page button {
+    width: 20%;
+    padding: 7px;
+    background-color: #206ab9;
+    color: #c1d1de;
+    border-radius: 1px;
+    cursor: pointer;
+    outline:auto;
+}
+
