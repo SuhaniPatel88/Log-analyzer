@@ -37,6 +37,7 @@
    
 1. **Go to file_uploading directory and start the application:**
    ```python
+   cd file_uploading
    python main.py
    ```
 
