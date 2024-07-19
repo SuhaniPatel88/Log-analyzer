@@ -1,4 +1,2 @@
-python
-flask
-sqlite3
+Flask
 
