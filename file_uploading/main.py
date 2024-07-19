@@ -69,7 +69,7 @@ def filter_logs():
     value = request.args.get('value')
     if criteria is None:
         return "Criteria not specified"
-    table_name = 'clf_combined' if log_type in ['combined', 'clf'] else 'json_logs'
+    table_name = 'clf_combined_logs' if log_type in ['combined', 'clf'] else 'json_logs'
     # Map the criteria to the correct column name for the current log_type
     column_name = criteria_mapping.get(criteria, {}).get(table_name)
     if column_name is None:
