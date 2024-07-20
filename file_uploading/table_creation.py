@@ -5,7 +5,7 @@ db_path = os.path.join(current_dir, 'logs.db')
 
 def combined_log_format():
     try:
-        with sqlite3.connect(db_path) as s:
+        with sqlite3.connect(db_path,timeout=10.0) as s:
             s.execute('''CREATE TABLE IF NOT EXISTS clf_combined_logs
                         (  
                         File_name TEXT,
@@ -25,7 +25,7 @@ def combined_log_format():
 
 def json_log_format():
     try:
-        with sqlite3.connect(db_path) as s:
+        with sqlite3.connect(db_path,timeout=10.0) as s:
             s.execute('''CREATE TABLE IF NOT EXISTS json_logs
                         (
                         Endtime TEXT,
